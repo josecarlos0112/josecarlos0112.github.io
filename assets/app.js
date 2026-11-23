@@ -378,7 +378,7 @@
     $('#themeToggle').addEventListener('click', () => {
       const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', next === 'dark' ? '#0a0b0a' : '#f4f2ec');
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', next === 'dark' ? '#09090f' : '#f4f4f8');
       store.set('theme', next);
     });
 
