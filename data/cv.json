@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "updated": "2026-11-23",
+    "languages": ["es", "en"]
+  },
+  "basics": {
+    "name": "José Carlos Zorrilla García",
+    "shortName": "José Carlos Zorrilla",
+    "headline": {
+      "es": "Ingeniería Informática (4.º año) · QA · Desarrollo Web · Administración de Sistemas",
+      "en": "Computer Engineering (4th year) · QA · Web Development · Systems Administration"
+    },
+    "location": { "city": "Madrid", "country": { "es": "España", "en": "Spain" } },
+    "nationality": { "es": "Peruana", "en": "Peruvian" },
+    "email": "joseczg2001@gmail.com",
+    "phone": null,
+    "profiles": [
+      { "network": "LinkedIn", "username": "joseczorrilla", "url": "https://linkedin.com/in/joseczorrilla" },
+      { "network": "GitHub", "username": "josecarlos0112", "url": "https://github.com/josecarlos0112" }
+    ],
+    "summary": {
+      "es": "Estudiante de último curso de Ingeniería Informática (graduación en junio de 2027) con más de 6 años de experiencia práctica en desarrollo web, administración de sistemas y soporte IT en entorno empresarial real. Actualmente realizando prácticas de QA en el departamento de Desarrollo Digital del Atlético de Madrid, compaginadas con mi rol de administrador de la infraestructura de hosting y dominios de Andes Systems. Acostumbrado a trabajar de forma autónoma, documentar procesos y comunicarme directamente con clientes.",
+      "en": "Final-year Computer Engineering student (graduating June 2027) with over 6 years of hands-on experience in web development, systems administration and IT support in a real business environment. Currently a QA intern in the Digital Development department at Atlético de Madrid, alongside my role as administrator of Andes Systems' hosting and domain infrastructure. Comfortable working independently, documenting processes and communicating directly with clients."
+    }
+  },
+  "work": [
+    {
+      "id": "atletico-madrid",
+      "company": "Club Atlético de Madrid",
+      "position": { "es": "Prácticas en QA · Desarrollo Digital", "en": "QA Intern · Digital Development" },
+      "location": { "es": "Madrid, España", "en": "Madrid, Spain" },
+      "startDate": "2026-10",
+      "endDate": null,
+      "current": true,
+      "highlights": {
+        "es": [
+          "Pruebas funcionales y detección de incidencias en productos digitales del club",
+          "Documentación y seguimiento de incidencias con Jira en un equipo que trabaja con metodología Scrum",
+          "Verificación de correcciones y comunicación de resultados al equipo de desarrollo"
+        ],
+        "en": [
+          "Functional testing and defect detection across the club's digital products",
+          "Issue documentation and tracking in Jira within a team working under Scrum",
+          "Verification of fixes and reporting of results back to the development team"
+        ]
+      }
+    },
+    {
+      "id": "andes-systems",
+      "company": "Andes Systems",
+      "position": { "es": "Administrador de Sistemas y Desarrollador Web", "en": "Systems Administrator & Web Developer" },
+      "location": { "es": "Perú / Remoto", "en": "Peru / Remote" },
+      "startDate": "2019",
+      "endDate": null,
+      "current": true,
+      "highlights": {
+        "es": [
+          "Administración de la infraestructura de hosting y dominios de la empresa y de su cartera de clientes en Latinoamérica: cPanel/WHM, gestión de DNS, migraciones y renovaciones",
+          "Administración de servidores en AWS EC2: despliegues, acceso por SSH, copias de seguridad y monitorización",
+          "Desarrollo y mantenimiento de aplicaciones y sitios web con Laravel (PHP), HTML, CSS y JavaScript",
+          "Integración de envío de correo transaccional desde Laravel mediante Microsoft 365 (registro de aplicación en Entra ID, OAuth 2.0 y Microsoft Graph API)",
+          "Configuración y soporte de correo corporativo (Microsoft 365, Google Workspace) y gestión segura de accesos y credenciales",
+          "Respuesta ante incidente de seguridad en AWS: contención, restauración de servicios, elaboración de documentación de seguridad y comunicación a clientes afectados",
+          "Elaboración y despliegue de un manual propio de configuración y aseguramiento de equipos corporativos",
+          "Administración de bases de datos MySQL/MariaDB, incluidas migraciones entre servidores",
+          "Soporte técnico a clientes y coordinación de proyectos con varias partes interesadas",
+          "Uso intensivo de herramientas de IA para automatizar y optimizar tareas del día a día"
+        ],
+        "en": [
+          "Administration of the company's hosting and domain infrastructure and that of its client portfolio across Latin America: cPanel/WHM, DNS management, migrations and renewals",
+          "AWS EC2 server administration: deployments, SSH access, backups and monitoring",
+          "Development and maintenance of web applications and websites with Laravel (PHP), HTML, CSS and JavaScript",
+          "Integration of transactional email from Laravel via Microsoft 365 (app registration in Entra ID, OAuth 2.0 and Microsoft Graph API)",
+          "Corporate email setup and support (Microsoft 365, Google Workspace) and secure management of access and credentials",
+          "Security incident response on AWS: containment, service restoration, security documentation and communication with affected clients",
+          "Authored and rolled out an in-house manual for configuring and hardening corporate laptops",
+          "MySQL/MariaDB database administration, including server-to-server migrations",
+          "Technical support for clients and project coordination with multiple stakeholders",
+          "Advanced use of AI tools to automate and streamline day-to-day work"
+        ]
+      }
+    },
+    {
+      "id": "reformas",
+      "company": { "es": "Autónomo", "en": "Self-employed" },
+      "position": { "es": "Técnico de Reformas", "en": "Renovation Technician" },
+      "location": { "es": "Madrid, España", "en": "Madrid, Spain" },
+      "startDate": "2022",
+      "endDate": "2025",
+      "current": false,
+      "highlights": {
+        "es": [
+          "Trabajos de reforma: pintura, soldadura, pladur, fontanería y electricidad básica",
+          "Gestión autónoma de proyectos: presupuesto, materiales, plazos y relación con el cliente"
+        ],
+        "en": [
+          "Renovation work: painting, welding, plasterboard, plumbing and basic electrical",
+          "Autonomous project management: budgeting, materials, deadlines and client relations"
+        ]
+      }
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Alfonso X el Sabio (UAX)",
+      "area": { "es": "Grado en Ingeniería Informática", "en": "Bachelor's Degree in Computer Engineering" },
+      "location": "Madrid",
+      "startDate": "2021",
+      "endDate": "2027-06",
+      "expected": true,
+      "highlights": {
+        "es": [
+          "Asignaturas destacadas: Planificación y Gestión de Sistemas de Información (ITIL v4, TOGAF), Interacción Hombre-Máquina, Programación Concurrente y Paralela, Inteligencia Artificial, Arquitectura de Computadores, Redes",
+          "Proyecto de IA: clasificador binario de neumonía en radiografías de tórax con transfer learning (VGG16 / EfficientNetB0) sobre datos de Kaggle",
+          "Programación paralela en C con OpenMP: difusión de calor y algoritmo KNN",
+          "Metodología activa en PGSI: exposiciones semanales en grupo y gestión del conocimiento entre compañeros"
+        ],
+        "en": [
+          "Key subjects: IT Systems Planning & Management (ITIL v4, TOGAF), Human-Computer Interaction, Concurrent & Parallel Programming, Artificial Intelligence, Computer Architecture, Networking",
+          "AI project: binary chest X-ray pneumonia classifier using transfer learning (VGG16 / EfficientNetB0) on Kaggle data",
+          "Parallel programming in C with OpenMP: heat diffusion and KNN algorithms",
+          "Active learning methodology in PGSI: weekly group presentations and peer knowledge sharing"
+        ]
+      }
+    }
+  ],
+  "certificates": [
+    { "name": { "es": "Agile Leadership – Especialización de 5 cursos", "en": "Agile Leadership – 5-course specialization" }, "issuer": "University of Colorado (Coursera)" },
+    { "name": { "es": "Preparación para la certificación ISO 27001", "en": "ISO 27001 certification preparation" }, "issuer": "Platzi" },
+    { "name": { "es": "Fundamentos de C++", "en": "C++ Fundamentals" }, "issuer": "Platzi" }
+  ],
+  "skills": [
+    { "category": { "es": "Desarrollo Web", "en": "Web Development" }, "items": ["Laravel (PHP)", "HTML", "CSS", "JavaScript", "WordPress"] },
+    { "category": { "es": "Sistemas y Cloud", "en": "Systems & Cloud" }, "items": ["AWS EC2", "cPanel", "WHM", "Linux", "SSH", "MobaXterm", "DNS"] },
+    { "category": { "es": "Bases de datos", "en": "Databases" }, "items": ["MySQL", "MariaDB", "HeidiSQL"] },
+    { "category": { "es": "QA y Gestión", "en": "QA & Management" }, "items": ["Jira", "Scrum", "ITIL v4", "TOGAF"] },
+    { "category": { "es": "Herramientas", "en": "Tools" }, "items": ["Git", "GitHub", "Microsoft 365", "Google Workspace", "Postman", "Canva", "Meta Ads"] },
+    { "category": { "es": "Inteligencia Artificial", "en": "Artificial Intelligence" }, "items": ["Claude", "ChatGPT", "TensorFlow/Keras", "Transfer learning"] },
+    { "category": { "es": "Otros", "en": "Other" }, "items": ["Cisco Packet Tracer", "Microsoft Graph API"] }
+  ],
+  "languages": [
+    { "language": { "es": "Español", "en": "Spanish" }, "fluency": { "es": "Nativo", "en": "Native" }, "cefr": "C2" },
+    { "language": { "es": "Inglés", "en": "English" }, "fluency": { "es": "Intermedio-alto", "en": "Intermediate-high" }, "cefr": "B1-B2" }
+  ],
+  "projects": [
+    {
+      "name": { "es": "Clasificador de neumonía en radiografías de tórax", "en": "Chest X-ray pneumonia classifier" },
+      "description": {
+        "es": "Clasificador binario con transfer learning (VGG16 / EfficientNetB0) entrenado sobre datos de Kaggle en Google Colab.",
+        "en": "Binary classifier using transfer learning (VGG16 / EfficientNetB0) trained on Kaggle data in Google Colab."
+      },
+      "keywords": ["Python", "TensorFlow", "Keras", "Transfer learning", "Google Colab"]
+    },
+    {
+      "name": { "es": "Integración de correo transaccional con Microsoft Graph", "en": "Transactional email integration with Microsoft Graph" },
+      "description": {
+        "es": "Envío de correo desde un sistema Laravel en producción vía Microsoft 365, con registro de aplicación en Entra ID y OAuth 2.0.",
+        "en": "Email delivery from a production Laravel system via Microsoft 365, with app registration in Entra ID and OAuth 2.0."
+      },
+      "keywords": ["Laravel", "Microsoft Graph API", "OAuth 2.0", "Entra ID"]
+    }
+  ],
+  "volunteer": {
+    "es": ["Voluntariado en campaña de vacunación COVID-19 en Perú (2021)", "Donante habitual de sangre"],
+    "en": ["Volunteer in COVID-19 vaccination campaign in Peru (2021)", "Regular blood donor"]
+  }
+}
