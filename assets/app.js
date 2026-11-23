@@ -6,6 +6,8 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  // Wraps mentions of the club in an interactive span (see assets/fx.js).
+  const atleti = (html) => String(html).replace(/Atlético de Madrid/g, '<span class="atleti" tabindex="0" role="button">Atlético de Madrid</span>');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -34,6 +36,8 @@
       expected: 'Prevista', start: 'Inicio', grad: 'Graduación',
       updated: 'cv.json · actualizado',
       loadError: 'No se pudieron cargar los datos del CV.',
+      'game.invite': 'modo QA: ¿cuántos bugs cazas en 30 s?',
+      'game.play': 'jugar',
       term: [
         ['cmd', 'whoami'],
         ['out', 'José Carlos Zorrilla · ingeniero informático en 4.º'],
@@ -66,6 +70,8 @@
       expected: 'Expected', start: 'Start', grad: 'Graduation',
       updated: 'cv.json · updated',
       loadError: 'Could not load CV data.',
+      'game.invite': 'QA mode: how many bugs can you squash in 30 s?',
+      'game.play': 'play',
       term: [
         ['cmd', 'whoami'],
         ['out', 'José Carlos Zorrilla · 4th-year computer engineer'],
@@ -131,7 +137,7 @@
     document.documentElement.lang = lang;
     $$('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
     $$('.lang-switch button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-    $('#cvDownload').setAttribute('href', `data/CV_JoseCarlosZorrilla_${lang.toUpperCase()}.docx`);
+    $('#cvDownload').setAttribute('href', `data/CV_JoseCarlosZorrilla_${lang.toUpperCase()}.pdf`);
     $('#themeToggle').setAttribute('aria-label', lang === 'es' ? 'Cambiar tema' : 'Toggle theme');
   }
 
@@ -141,9 +147,9 @@
     const lastPart = b.shortName.split(' ').slice(2).join(' ') || rest.join(' ');
     $('#heroFirst').textContent = firstPart || first;
     $('#heroLast').textContent = lastPart;
-    $('#heroStatus').textContent = t('hero.status');
+    $('#heroStatus').innerHTML = atleti(esc(t('hero.status')));
     $('#heroRoles').innerHTML = L(b.headline).split('·').map((s) => `<span>${esc(s.trim())}</span>`).join('');
-    $('#heroLede').innerHTML = t('hero.lede');
+    $('#heroLede').innerHTML = atleti(t('hero.lede'));
     $('#heroLocation').textContent = `${b.location.city}, ${L(b.location.country)}`;
     const edu = CV.education[0];
     $('#heroGrad').textContent = edu ? fmtDate(edu.endDate) : '';
@@ -157,10 +163,10 @@
 
   function renderAbout(b) {
     let txt = esc(L(b.summary));
-    ['Atlético de Madrid', 'Andes Systems', '6 años', '6 years'].forEach((k) => {
+    ['Andes Systems', '6 años', '6 years'].forEach((k) => {
       txt = txt.replace(k, `<mark>${k}</mark>`);
     });
-    $('#aboutText').innerHTML = txt;
+    $('#aboutText').innerHTML = atleti(txt);
 
     const earliest = CV.work.reduce((min, w) => (String(w.startDate) < min ? String(w.startDate) : min), '9999');
     const yrs = Math.floor((Date.now() - parseDate(earliest, true)) / (365.25 * 864e5));
@@ -180,7 +186,8 @@
     $('#timeline').innerHTML = CV.work.map((w) => {
       const hl = L(w.highlights) || [];
       const extra = hl.length - LIMIT;
-      return `<li class="job">
+      const isAtleti = /Atlético/.test(L(w.company));
+      return `<li class="job${isAtleti ? ' job-atleti' : ''}">
         <div class="job-meta reveal">
           <div class="job-dates">${esc(fmtDate(w.startDate))} — ${esc(fmtDate(w.endDate))}</div>
           <div class="job-duration">${esc(duration(w.startDate, w.endDate))}</div>
@@ -188,7 +195,7 @@
         </div>
         <article class="card job-card reveal">
           <h3>${esc(L(w.position))}</h3>
-          <div class="job-company"><strong>${esc(L(w.company))}</strong><span class="sep"></span><span>${esc(L(w.location))}</span></div>
+          <div class="job-company"><strong>${atleti(esc(L(w.company)))}</strong><span class="sep"></span><span>${esc(L(w.location))}</span></div>
           <ul class="bullets">${hl.map((h, i) => `<li class="${i >= LIMIT ? 'hidden' : ''}">${esc(h)}</li>`).join('')}</ul>
           ${extra > 0 ? `<button type="button" class="more-btn" data-n="${extra}" aria-expanded="false">${esc(t('more').replace('{n}', extra))} ↓</button>` : ''}
         </article>
@@ -282,14 +289,16 @@
   async function runTerminal() {
     const el = $('#terminal');
     const token = ++termToken;
+    window.BugHunt?.stop();
     const lines = t('term');
     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     const cls = { cmd: '', out: '', ok: 'ok', mute: 'm' };
     let html = '';
     const paint = (extra = '') => { el.innerHTML = html + extra + '<span class="caret"></span>'; };
+    const invite = () => `<span class="m"># ${esc(t('game.invite'))}</span>\n<span class="p">❯</span> <button type="button" class="term-play" data-bughunt>./bug_hunt <span>▶ ${esc(t('game.play'))}</span></button>\n`;
 
     if (reduced) {
-      html = lines.map(([k, s]) => (k === 'cmd' ? `<span class="p">❯</span> <span class="c">${esc(s)}</span>` : `<span class="${cls[k]}">${esc(s)}</span>`)).join('\n') + '\n<span class="p">❯</span> ';
+      html = lines.map(([k, s]) => (k === 'cmd' ? `<span class="p">❯</span> <span class="c">${esc(s)}</span>` : `<span class="${cls[k]}">${esc(s)}</span>`)).join('\n') + '\n' + invite();
       paint();
       return;
     }
@@ -312,7 +321,9 @@
         await sleep(140);
       }
     }
-    html += '<span class="p">❯</span> ';
+    await sleep(300);
+    if (token !== termToken) return;
+    html += invite();
     paint();
   }
 

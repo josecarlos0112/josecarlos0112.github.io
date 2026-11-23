@@ -4,7 +4,7 @@ Landing page personal construida a partir de mi CV. HTML, CSS y JavaScript sin d
 
 - **En vivo:** https://josecarlos0112.github.io
 - **Datos:** todo el contenido se genera desde [`data/cv.json`](data/cv.json) (bilingüe ES/EN). Para actualizar la web basta con editar ese archivo.
-- **Funciones:** selector de idioma ES/EN, tema claro/oscuro, descarga del CV en Word y animaciones que respetan `prefers-reduced-motion`.
+- **Funciones:** selector de idioma ES/EN, tema claro/oscuro, descarga del CV en PDF y animaciones que respetan `prefers-reduced-motion`.
 
 ## Ver en local
 

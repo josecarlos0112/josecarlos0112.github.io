@@ -5,8 +5,8 @@ Contenido de `data/`:
 | Archivo | Qué es |
 |---|---|
 | `cv.json` | Fuente única de datos del CV. Bilingüe ES/EN. |
-| `CV_JoseCarlosZorrilla_ES.docx` | CV en Word (español), para descarga desde la web. |
-| `CV_JoseCarlosZorrilla_EN.docx` | CV en Word (inglés), para descarga desde la web. |
+| `CV_JoseCarlosZorrilla_ES.docx` / `.pdf` | CV en español. El PDF (exportado desde el Word) es el que se descarga desde la web. |
+| `CV_JoseCarlosZorrilla_EN.docx` / `.pdf` | CV en inglés. El PDF (exportado desde el Word) es el que se descarga desde la web. |
 
 Actualizado: 2026-11-23.
 
