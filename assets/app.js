@@ -19,7 +19,8 @@
     es: {
       'nav.about': 'Sobre mí', 'nav.experience': 'Experiencia', 'nav.skills': 'Stack', 'nav.projects': 'Proyectos',
       'nav.education': 'Formación', 'nav.contact': 'Contacto',
-      'hero.talk': 'Hablemos', 'hero.download': 'Descargar CV', 'hero.based': 'Base', 'hero.grad': 'Graduación',
+      'hero.talk': 'Hablemos', 'hero.download': 'Descargar CV', 'hero.based': 'Base', 'hero.from': 'De',
+      'nav.play': 'Jugar', 'sticker.top': '3 juegos', 'sticker.main': '¡Juega!',
       'hero.status': 'Ahora: QA en el Atlético de Madrid',
       'hero.lede': 'Pruebo, construyo y mantengo software que funciona <strong>en producción</strong>. QA en el Atlético de Madrid y, desde 2019, sistemas y desarrollo web en Andes Systems.',
       'about.title': 'Sobre mí', 'experience.title': 'Experiencia', 'skills.title': 'Stack & herramientas',
@@ -34,10 +35,8 @@
       'stat.years': 'años de experiencia práctica', 'stat.roles': 'puestos en activo ahora mismo',
       'stat.tech': 'tecnologías y herramientas', 'stat.langs': 'idiomas de trabajo',
       expected: 'Prevista', start: 'Inicio', grad: 'Graduación',
-      updated: 'cv.json · actualizado',
       loadError: 'No se pudieron cargar los datos del CV.',
-      'game.invite': 'modo QA: ¿cuántos bugs cazas en 30 s?',
-      'game.play': 'jugar',
+      'game.invite': 'arcade abierto: 3 minijuegos aquí abajo ↓',
       term: [
         ['cmd', 'whoami'],
         ['out', 'José Carlos Zorrilla · ingeniero informático en 4.º'],
@@ -53,7 +52,8 @@
     en: {
       'nav.about': 'About', 'nav.experience': 'Experience', 'nav.skills': 'Stack', 'nav.projects': 'Projects',
       'nav.education': 'Education', 'nav.contact': 'Contact',
-      'hero.talk': "Let's talk", 'hero.download': 'Download CV', 'hero.based': 'Based in', 'hero.grad': 'Graduating',
+      'hero.talk': "Let's talk", 'hero.download': 'Download CV', 'hero.based': 'Based in', 'hero.from': 'From',
+      'nav.play': 'Play', 'sticker.top': '3 games', 'sticker.main': 'Play!',
       'hero.status': 'Now: QA at Atlético de Madrid',
       'hero.lede': 'I test, build and maintain software that runs <strong>in production</strong>. QA at Atlético de Madrid and, since 2019, systems and web development at Andes Systems.',
       'about.title': 'About me', 'experience.title': 'Experience', 'skills.title': 'Stack & tools',
@@ -68,10 +68,8 @@
       'stat.years': 'years of hands-on experience', 'stat.roles': 'roles held right now',
       'stat.tech': 'technologies & tools', 'stat.langs': 'working languages',
       expected: 'Expected', start: 'Start', grad: 'Graduation',
-      updated: 'cv.json · updated',
       loadError: 'Could not load CV data.',
-      'game.invite': 'QA mode: how many bugs can you squash in 30 s?',
-      'game.play': 'play',
+      'game.invite': 'arcade open: 3 mini-games right below ↓',
       term: [
         ['cmd', 'whoami'],
         ['out', 'José Carlos Zorrilla · 4th-year computer engineer'],
@@ -151,8 +149,18 @@
     $('#heroRoles').innerHTML = L(b.headline).split('·').map((s) => `<span>${esc(s.trim())}</span>`).join('');
     $('#heroLede').innerHTML = atleti(t('hero.lede'));
     $('#heroLocation').textContent = `${b.location.city}, ${L(b.location.country)}`;
-    const edu = CV.education[0];
-    $('#heroGrad').textContent = edu ? fmtDate(edu.endDate) : '';
+    $('#heroFrom').textContent = L(b.origin) || '';
+  }
+
+  // Splits the motto into two balanced lines for the scroll-driven quote band.
+  function renderQuote(b) {
+    const m = L(b.motto) || '';
+    const mid = m.length / 2;
+    let cut = -1;
+    for (let i = 0; i < m.length; i++) if (m[i] === ' ' && (cut < 0 || Math.abs(i - mid) < Math.abs(cut - mid))) cut = i;
+    $('#quote1').textContent = cut > 0 ? `“${m.slice(0, cut)}` : `“${m}`;
+    $('#quote2').innerHTML = cut > 0 ? `<em>${esc(m.slice(cut + 1))}”</em>` : '';
+    $('#footerQuote').textContent = m ? `“${m}”` : '';
   }
 
   function renderMarquee() {
@@ -204,9 +212,11 @@
   }
 
   function renderSkills() {
+    const n = CV.skills.length;
+    $('#hsTotal').textContent = String(n).padStart(2, '0');
     $('#bento').innerHTML = CV.skills.map((s, i) => `
-      <article class="card reveal ${bentoSpans[i] || 'b-mid'}">
-        <div class="b-icon">${svg(skillIcons[i] || 'other', 22)}</div>
+      <article class="card hs-card">
+        <div class="hs-card-top"><div class="b-icon">${svg(skillIcons[i] || 'other', 22)}</div><span class="hs-idx">${String(i + 1).padStart(2, '0')} / ${String(n).padStart(2, '0')}</span></div>
         <h3>${esc(L(s.category))}</h3>
         <div class="chips">${s.items.map((it) => `<span class="chip">${esc(it)}</span>`).join('')}</div>
       </article>`).join('');
@@ -266,7 +276,7 @@
         `<a class="social" href="tel:${esc(String(b.phone).replace(/\s+/g, ''))}"><span>${esc(b.phone)}</span></a>`);
     }
     $('#year').textContent = new Date().getFullYear();
-    $('#updated').textContent = `${t('updated')} ${CV.meta.updated}`;
+    $('#version').textContent = CV.meta.version ? `v${CV.meta.version}` : '';
   }
 
   function renderAll() {
@@ -275,6 +285,7 @@
     renderHero(b);
     renderMarquee();
     renderAbout(b);
+    renderQuote(b);
     renderWork();
     renderSkills();
     renderProjects();
@@ -282,6 +293,47 @@
     renderContact(b);
     observeReveals();
     runTerminal();
+    window.Arcade?.render();
+    layoutScrollFx();
+  }
+
+  /* ---------- Scroll-driven effects ----------
+     1) Stack section: pinned, cards slide horizontally while you scroll down (desktop only;
+        phones get a native swipe carousel).
+     2) Quote band: its two lines slide in from opposite sides and meet in the middle. */
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  let hsDist = 0;
+  function layoutScrollFx() {
+    const sec = $('#skills'), track = $('#bento');
+    if (!sec || !track) return;
+    const on = innerWidth > 860 && !reduced;
+    sec.classList.toggle('hs-on', on);
+    if (!on) { sec.style.height = ''; track.style.transform = ''; updateScrollFx(); return; }
+    hsDist = Math.max(0, track.scrollWidth - track.parentElement.clientWidth);
+    sec.style.height = `${innerHeight + hsDist}px`;
+    updateScrollFx();
+  }
+  function setMeter(p) {
+    const n = CV?.skills.length || 1;
+    $('#hsBar').style.transform = `scaleX(${p})`;
+    $('#hsCount').textContent = String(1 + Math.round(p * (n - 1))).padStart(2, '0');
+  }
+  function updateScrollFx() {
+    const sec = $('#skills');
+    if (sec?.classList.contains('hs-on') && hsDist > 0) {
+      const p = clamp(-sec.getBoundingClientRect().top / hsDist, 0, 1);
+      $('#bento').style.transform = `translate3d(${(-p * hsDist).toFixed(1)}px,0,0)`;
+      setMeter(p);
+    }
+    const q = $('#quote');
+    if (q && !reduced) {
+      const r = q.getBoundingClientRect();
+      const p = clamp((innerHeight - r.top) / (innerHeight * 0.42 + r.height * 0.5), 0, 1);
+      const off = (1 - p) * 38;
+      $('#quote1').style.transform = `translate3d(${-off}vw,0,0)`;
+      $('#quote2').style.transform = `translate3d(${off}vw,0,0)`;
+      q.style.setProperty('--qp', p.toFixed(3));
+    }
   }
 
   /* ---------- Terminal ---------- */
@@ -289,13 +341,13 @@
   async function runTerminal() {
     const el = $('#terminal');
     const token = ++termToken;
-    window.BugHunt?.stop();
+    window.Arcade?.stop();
     const lines = t('term');
     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     const cls = { cmd: '', out: '', ok: 'ok', mute: 'm' };
     let html = '';
     const paint = (extra = '') => { el.innerHTML = html + extra + '<span class="caret"></span>'; };
-    const invite = () => `<span class="m"># ${esc(t('game.invite'))}</span>\n<span class="p">❯</span> <button type="button" class="term-play" data-bughunt>./bug_hunt <span>▶ ${esc(t('game.play'))}</span></button>\n`;
+    const invite = () => `<span class="m"># ${esc(t('game.invite'))}</span>\n<span class="p">❯</span> `;
 
     if (reduced) {
       html = lines.map(([k, s]) => (k === 'cmd' ? `<span class="p">❯</span> <span class="c">${esc(s)}</span>` : `<span class="${cls[k]}">${esc(s)}</span>`)).join('\n') + '\n' + invite();
@@ -389,7 +441,7 @@
     $('#themeToggle').addEventListener('click', () => {
       const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', next === 'dark' ? '#09090f' : '#f4f4f8');
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', next === 'dark' ? '#09090f' : '#e6e6ee');
       store.set('theme', next);
     });
 
@@ -427,8 +479,17 @@
       const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
       bar.style.transform = `scaleX(${p})`;
       nav.classList.toggle('scrolled', h.scrollTop > 20);
+      updateScrollFx();
     };
     addEventListener('scroll', onScroll, { passive: true });
+    let rT;
+    addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(layoutScrollFx, 120); });
+    const vp = $('.hs-viewport');
+    vp?.addEventListener('scroll', () => {
+      if ($('#skills').classList.contains('hs-on')) return;
+      const max = vp.scrollWidth - vp.clientWidth;
+      setMeter(max > 0 ? vp.scrollLeft / max : 0);
+    }, { passive: true });
     onScroll();
 
     if ('IntersectionObserver' in window) {
@@ -461,7 +522,7 @@
 
   fetch('data/cv.json', { cache: 'no-cache' })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then((data) => { CV = data; renderAll(); })
+    .then((data) => { CV = data; renderAll(); document.fonts?.ready.then(layoutScrollFx); })
     .catch(() => {
       $('#heroLede').textContent = t('loadError');
       $$('.reveal').forEach((el) => el.classList.add('in'));

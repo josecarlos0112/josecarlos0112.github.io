@@ -1,6 +1,7 @@
 {
   "meta": {
-    "updated": "2026-11-23",
+    "updated": "2026-11-24",
+    "version": "1.3.0",
     "languages": ["es", "en"]
   },
   "basics": {
@@ -11,9 +12,15 @@
       "en": "Computer Engineering (4th year) · QA · Web Development · Systems Administration"
     },
     "location": { "city": "Madrid", "country": { "es": "España", "en": "Spain" } },
+    "origin": { "es": "Lima, Perú", "en": "Lima, Peru" },
     "nationality": { "es": "Peruana", "en": "Peruvian" },
     "email": "joseczg2001@gmail.com",
     "phone": null,
+    "url": "https://josecarlos0112.github.io",
+    "motto": {
+      "es": "Un commit al día vale más que un sprint heroico.",
+      "en": "One commit a day beats a heroic sprint."
+    },
     "profiles": [
       { "network": "LinkedIn", "username": "joseczorrilla", "url": "https://linkedin.com/in/joseczorrilla" },
       { "network": "GitHub", "username": "josecarlos0112", "url": "https://github.com/josecarlos0112" }

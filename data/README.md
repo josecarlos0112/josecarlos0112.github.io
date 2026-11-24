@@ -8,7 +8,7 @@ Contenido de `data/`:
 | `CV_JoseCarlosZorrilla_ES.docx` / `.pdf` | CV en español. El PDF (exportado desde el Word) es el que se descarga desde la web. |
 | `CV_JoseCarlosZorrilla_EN.docx` / `.pdf` | CV en inglés. El PDF (exportado desde el Word) es el que se descarga desde la web. |
 
-Actualizado: 2026-11-23.
+Actualizado: 2026-11-24. `meta.version` es la versión de la web que se muestra en el pie.
 
 ## Forma de `cv.json`
 
@@ -17,7 +17,7 @@ Los campos de texto traducibles son objetos `{ "es": "...", "en": "..." }`. El r
 
 Bloques de primer nivel:
 
-- `basics` — nombre, titular, ubicación, contacto, perfiles y resumen.
+- `basics` — nombre, titular, ubicación, origen (`origin`), contacto, web (`url`), frase personal (`motto`), perfiles y resumen.
 - `work[]` — experiencia, ya ordenada de más reciente a más antigua.
   `current: true` marca los puestos en activo; `endDate: null` va con ellos.
 - `education[]` — `expected: true` indica que `endDate` es la graduación prevista.
