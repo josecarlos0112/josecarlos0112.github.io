@@ -793,3 +793,21 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .mono-mark { font-size: 0; }
   .mono-mark::after { content: "JC"; font-size: 14px; }
 }
+
+/* =========================================================
+   Calm mode for phones & touch tablets (v1.3.1)
+   Keeps only fades and user-triggered effects: nothing slides or loops on its own.
+   ========================================================= */
+@media (max-width: 860px), (pointer: coarse) {
+  .bg-glow { animation: none; }
+  .marquee { overflow-x: auto; scrollbar-width: none; }
+  .marquee::-webkit-scrollbar { display: none; }
+  .marquee-track { animation: none; }
+  .js .reveal { transform: none; transition: opacity .6s ease; }
+  .play-sticker, .play-sticker::before, .nav-play, .nav-play-ico, .arcade-btn::after, .arcade-dot { animation: none; }
+  .play-sticker { transform: rotate(8deg); }
+  .arcade-btn::after { display: none; }
+  .terminal, .terminal:hover { transform: none; }
+  .quote-line { transform: none !important; }
+  .quote-sign { opacity: 1; }
+}

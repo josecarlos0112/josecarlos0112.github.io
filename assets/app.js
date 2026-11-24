@@ -9,6 +9,9 @@
   // Wraps mentions of the club in an interactive span (see assets/fx.js).
   const atleti = (html) => String(html).replace(/Atlético de Madrid/g, '<span class="atleti" tabindex="0" role="button">Atlético de Madrid</span>');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Phones and touch tablets get a calmer page: no scroll-driven sliding (it caused motion sickness).
+  const calmMQ = matchMedia('(max-width: 860px), (pointer: coarse)');
+  const calm = () => reduced || calmMQ.matches;
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
@@ -306,7 +309,7 @@
   function layoutScrollFx() {
     const sec = $('#skills'), track = $('#bento');
     if (!sec || !track) return;
-    const on = innerWidth > 860 && !reduced;
+    const on = !calm();
     sec.classList.toggle('hs-on', on);
     if (!on) { sec.style.height = ''; track.style.transform = ''; updateScrollFx(); return; }
     hsDist = Math.max(0, track.scrollWidth - track.parentElement.clientWidth);
@@ -326,7 +329,9 @@
       setMeter(p);
     }
     const q = $('#quote');
-    if (q && !reduced) {
+    if (q && calm()) {
+      $("#quote1").style.transform = ""; $("#quote2").style.transform = ""; q.style.setProperty("--qp", "1");
+    } else if (q) {
       const r = q.getBoundingClientRect();
       const p = clamp((innerHeight - r.top) / (innerHeight * 0.42 + r.height * 0.5), 0, 1);
       const off = (1 - p) * 38;
