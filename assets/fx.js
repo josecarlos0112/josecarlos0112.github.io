@@ -305,9 +305,9 @@
         lastHit = t;
         const pts = (b.type === 'crit' ? 25 : 10) * combo;
         score += pts; hits++;
-        api.float(b.x, b.y - 12, `+${pts}`, b.type === 'crit' ? '#ff8da2' : '#b9c9ff');
-        api.burst(b.x, b.y, b.type === 'crit' ? '#ff4d6d' : '#8aa6ff', 14);
-        api.splat(b.x, b.y, b.type === 'crit' ? '#ff4d6d' : '#8aa6ff');
+        api.float(b.x, b.y - 12, `+${pts}`, b.type === 'crit' ? '#ff8da2' : '#b5d7fb');
+        api.burst(b.x, b.y, b.type === 'crit' ? '#ff4d6d' : '#6fb1f7', 14);
+        api.splat(b.x, b.y, b.type === 'crit' ? '#ff4d6d' : '#6fb1f7');
       },
       draw(ctx, time) { bugs.forEach((b) => drawBug(ctx, b, time)); },
       result() {
@@ -328,8 +328,8 @@
       ctx.restore();
       return;
     }
-    const body = b.type === 'crit' ? '#ff4d6d' : '#8aa6ff';
-    const dark = b.type === 'crit' ? '#8a1730' : '#2c3a8c';
+    const body = b.type === 'crit' ? '#ff4d6d' : '#6fb1f7';
+    const dark = b.type === 'crit' ? '#8a1730' : '#0b3a73';
     if (b.type === 'crit') { ctx.shadowColor = '#ff4d6d'; ctx.shadowBlur = 12; }
     ctx.strokeStyle = dark; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
     for (const side of [-1, 1]) {
@@ -588,7 +588,7 @@
         if (s.st === 'fail') {
           const gain = 10 + Math.round((s.ttl / s.ttl0) * 10);
           pts += gain; reboots++; s.st = 'ok';
-          api.float(cx, cy - 6, `+${gain}`, '#b9c9ff'); api.burst(cx, cy, '#8aa6ff', 10);
+          api.float(cx, cy - 6, `+${gain}`, '#b5d7fb'); api.burst(cx, cy, '#6fb1f7', 10);
         } else if (s.st === 'deploy') {
           pts += 25; bonus++; s.st = 'ok';
           api.float(cx, cy - 6, '+25', '#7ee2a8'); api.burst(cx, cy, '#7ee2a8', 12);

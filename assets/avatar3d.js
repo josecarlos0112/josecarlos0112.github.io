@@ -66,7 +66,7 @@ async function init() {
   const key = new THREE.DirectionalLight(0xffffff, 1.5); key.position.set(0.3, 0.8, 2.5); scene.add(key);
   const fill = new THREE.DirectionalLight(0xffffff, 0.6); fill.position.set(-1.2, 0.4, 1.5); scene.add(fill);
   const rimL = new THREE.DirectionalLight(0xdfe6ff, 0.9); rimL.position.set(-1.6, 1.2, -1.2); scene.add(rimL);
-  const rimR = new THREE.DirectionalLight(0xffe4ea, 0.7); rimR.position.set(1.6, 1.0, -1.2); scene.add(rimR);
+  const rimR = new THREE.DirectionalLight(0xffe8d2, 0.7); rimR.position.set(1.6, 1.0, -1.2); scene.add(rimR);
 
   const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
   const gltf = await loader.loadAsync(cfg.url);
