@@ -1,2 +1,7 @@
 .claude/
 node_modules/
+# Original caricature sources (optimised copies live in assets/img/)
+/char-*.png
+/img*.jpeg
+/assets/models/*
+!/assets/models/avatar.glb

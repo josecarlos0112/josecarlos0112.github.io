@@ -23,12 +23,13 @@
       'nav.about': 'Sobre mí', 'nav.experience': 'Experiencia', 'nav.skills': 'Stack', 'nav.projects': 'Proyectos',
       'nav.education': 'Formación', 'nav.contact': 'Contacto',
       'hero.talk': 'Hablemos', 'hero.download': 'Descargar CV', 'hero.based': 'Base', 'hero.from': 'De',
-      'nav.play': 'Jugar', 'sticker.top': '3 juegos', 'sticker.main': '¡Juega!',
+      'nav.play': 'Jugar', 'sticker.top': '3 juegos', 'sticker.main': '¡Juega!', 'hero.arcadeChip': '3 minijuegos ↓',
       'hero.status': 'Ahora: QA en el Atlético de Madrid',
       'hero.lede': 'Pruebo, construyo y mantengo software que funciona <strong>en producción</strong>. QA en el Atlético de Madrid y, desde 2019, sistemas y desarrollo web en Andes Systems.',
       'about.title': 'Sobre mí', 'experience.title': 'Experiencia', 'skills.title': 'Stack & herramientas',
       'projects.title': 'Proyectos destacados', 'education.title': 'Formación',
       'education.certs': 'Certificaciones', 'education.languages': 'Idiomas', 'education.volunteer': 'Voluntariado',
+      'about.more': 'Leer más', 'about.less': 'Leer menos', 'projects.code': 'Ver el código', 'education.details': 'Asignaturas y proyectos',
       'contact.title1': '¿Construimos algo', 'contact.title2': 'juntos?',
       'contact.lede': 'Abierto a oportunidades en QA, desarrollo web y administración de sistemas. Escríbeme y respondo rápido.',
       'contact.copy': 'Copiar email', 'contact.copied': 'Email copiado ✓', 'contact.cv': 'CV completo:',
@@ -56,12 +57,13 @@
       'nav.about': 'About', 'nav.experience': 'Experience', 'nav.skills': 'Stack', 'nav.projects': 'Projects',
       'nav.education': 'Education', 'nav.contact': 'Contact',
       'hero.talk': "Let's talk", 'hero.download': 'Download CV', 'hero.based': 'Based in', 'hero.from': 'From',
-      'nav.play': 'Play', 'sticker.top': '3 games', 'sticker.main': 'Play!',
+      'nav.play': 'Play', 'sticker.top': '3 games', 'sticker.main': 'Play!', 'hero.arcadeChip': '3 mini-games ↓',
       'hero.status': 'Now: QA at Atlético de Madrid',
       'hero.lede': 'I test, build and maintain software that runs <strong>in production</strong>. QA at Atlético de Madrid and, since 2019, systems and web development at Andes Systems.',
       'about.title': 'About me', 'experience.title': 'Experience', 'skills.title': 'Stack & tools',
       'projects.title': 'Featured projects', 'education.title': 'Education',
       'education.certs': 'Certifications', 'education.languages': 'Languages', 'education.volunteer': 'Volunteering',
+      'about.more': 'Read more', 'about.less': 'Show less', 'projects.code': 'View the code', 'education.details': 'Subjects & projects',
       'contact.title1': 'Shall we build something', 'contact.title2': 'together?',
       'contact.lede': 'Open to opportunities in QA, web development and systems administration. Drop me a line — I reply fast.',
       'contact.copy': 'Copy email', 'contact.copied': 'Email copied ✓', 'contact.cv': 'Full CV:',
@@ -95,6 +97,10 @@
     tools: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4Z"/>',
     ai: '<path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 10h4v4h-4z"/>',
     other: '<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
+    bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/>',
+    scan: '<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><circle cx="12" cy="12" r="3.2"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
     linkedin: '<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4z" fill="currentColor" stroke="none"/>',
     github: '<path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" fill="currentColor" stroke="none"/>',
   };
@@ -143,16 +149,28 @@
   }
 
   function renderHero(b) {
-    const [first, ...rest] = b.shortName.split(' ');
-    const firstPart = b.shortName.split(' ').slice(0, 2).join(' ');
-    const lastPart = b.shortName.split(' ').slice(2).join(' ') || rest.join(' ');
-    $('#heroFirst').textContent = firstPart || first;
-    $('#heroLast').textContent = lastPart;
+    // Full name: first two words on line 1, both surnames on line 2 (sized to fit, see fitHeroTitle).
+    const words = (b.name || b.shortName).split(' ');
+    $('#heroFirst').textContent = words.slice(0, 2).join(' ');
+    $('#heroLast').textContent = words.slice(2).join(' ');
+    fitHeroTitle();
     $('#heroStatus').innerHTML = atleti(esc(t('hero.status')));
     $('#heroRoles').innerHTML = L(b.headline).split('·').map((s) => `<span>${esc(s.trim())}</span>`).join('');
     $('#heroLede').innerHTML = atleti(t('hero.lede'));
     $('#heroLocation').textContent = `${b.location.city}, ${L(b.location.country)}`;
     $('#heroFrom').textContent = L(b.origin) || '';
+  }
+
+  // Hero title: as big as the CSS allows, but shrunk so the longest line ("Zorrilla García.") fits.
+  function fitHeroTitle() {
+    const h = $('.hero-title');
+    if (!h) return;
+    h.style.fontSize = '';
+    const max = parseFloat(getComputedStyle(h).fontSize);
+    const avail = h.clientWidth;
+    const range = document.createRange();
+    const widest = Math.max(...$$('.hero-title .line').map((l) => { range.selectNodeContents(l); return range.getBoundingClientRect().width; }));
+    if (widest > avail && widest > 0) h.style.fontSize = `${Math.floor(max * (avail / widest) * 0.98)}px`;
   }
 
   // Splits the motto into two balanced lines for the scroll-driven quote band.
@@ -178,6 +196,7 @@
       txt = txt.replace(k, `<mark>${k}</mark>`);
     });
     $('#aboutText').innerHTML = atleti(txt);
+    $('#aboutMore').textContent = $('#aboutText').classList.contains('clamp') ? t('about.more') : t('about.less');
 
     const earliest = CV.work.reduce((min, w) => (String(w.startDate) < min ? String(w.startDate) : min), '9999');
     const yrs = Math.floor((Date.now() - parseDate(earliest, true)) / (365.25 * 864e5));
@@ -226,12 +245,20 @@
   }
 
   function renderProjects() {
+    const n = String(CV.projects.length).padStart(2, '0');
     $('#projectList').innerHTML = CV.projects.map((p, i) => `
-      <article class="card project reveal">
-        <div class="project-num">${String(i + 1).padStart(2, '0')}</div>
+      <article class="card project reveal${i < 2 ? ' project-featured' : ''}">
+        <div class="project-head">
+          <span class="project-ico">${svg(p.icon || 'other', 22)}</span>
+          <span class="project-meta">
+            ${p.tag ? `<span class="project-tag">${esc(L(p.tag))}</span>` : ''}
+            <span class="project-idx">${String(i + 1).padStart(2, '0')} / ${n}</span>
+          </span>
+        </div>
         <h3>${esc(L(p.name))}</h3>
+        ${p.status ? `<span class="project-status"><span class="pulse"></span>${esc(L(p.status))}</span>` : ''}
         <p>${esc(L(p.description))}</p>
-        <div class="chips">${(p.keywords || []).map((k) => `<span class="chip">${esc(k)}</span>`).join('')}</div>
+        <div class="chips">${(p.keywords || []).map((k) => `<span class="chip${/^Claude/.test(k) ? ' chip-claude' : ''}">${esc(k)}</span>`).join('')}</div>
       </article>`).join('');
   }
 
@@ -249,7 +276,10 @@
           <div class="grad-track"><div class="grad-fill" data-pct="${pct.toFixed(1)}"></div></div>
           <div class="grad-labels"><span>${esc(t('start'))} ${esc(fmtDate(e.startDate))}</span><span>${Math.round(pct)}%</span><span>${esc(t('grad'))} ${esc(fmtDate(e.endDate))}</span></div>
         </div>
-        <ul class="bullets">${(L(e.highlights) || []).map((h) => `<li>${esc(h)}</li>`).join('')}</ul>`;
+        <details class="fold">
+          <summary>${esc(t('education.details'))}</summary>
+          <ul class="bullets">${(L(e.highlights) || []).map((h) => `<li>${esc(h)}</li>`).join('')}</ul>
+        </details>`;
     }
     $('#certList').innerHTML = CV.certificates.map((c) => `<li><strong>${esc(L(c.name))}</strong><span>${esc(c.issuer)}</span></li>`).join('');
 
@@ -329,12 +359,12 @@
       setMeter(p);
     }
     const q = $('#quote');
-    if (q && calm()) {
+    if (q && reduced) {
       $("#quote1").style.transform = ""; $("#quote2").style.transform = ""; q.style.setProperty("--qp", "1");
     } else if (q) {
       const r = q.getBoundingClientRect();
       const p = clamp((innerHeight - r.top) / (innerHeight * 0.42 + r.height * 0.5), 0, 1);
-      const off = (1 - p) * 38;
+      const off = (1 - p) * (calmMQ.matches ? 24 : 38); // gentler slide on phones
       $('#quote1').style.transform = `translate3d(${-off}vw,0,0)`;
       $('#quote2').style.transform = `translate3d(${off}vw,0,0)`;
       q.style.setProperty('--qp', p.toFixed(3));
@@ -443,6 +473,33 @@
   function bind() {
     $$('.lang-switch button').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
 
+    // "Read more" on the about text
+    $('#aboutMore')?.addEventListener('click', (e) => {
+      const open = !$('#aboutText').classList.toggle('clamp');
+      e.currentTarget.setAttribute('aria-expanded', String(open));
+      e.currentTarget.textContent = open ? t('about.less') : t('about.more');
+    });
+
+    // Tabs: certifications / languages / volunteering (arrow keys move between tabs)
+    const tabs = $$('.edu-tabs [role="tab"]');
+    const select = (tab) => {
+      tabs.forEach((x) => {
+        const on = x === tab;
+        x.setAttribute('aria-selected', String(on));
+        x.tabIndex = on ? 0 : -1;
+        document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+      });
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        select(next);
+        next.focus();
+      });
+    });
+
     $('#themeToggle').addEventListener('click', () => {
       const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
@@ -488,7 +545,7 @@
     };
     addEventListener('scroll', onScroll, { passive: true });
     let rT;
-    addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(layoutScrollFx, 120); });
+    addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(() => { fitHeroTitle(); layoutScrollFx(); }, 120); });
     const vp = $('.hs-viewport');
     vp?.addEventListener('scroll', () => {
       if ($('#skills').classList.contains('hs-on')) return;
@@ -527,7 +584,7 @@
 
   fetch('data/cv.json', { cache: 'no-cache' })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then((data) => { CV = data; renderAll(); document.fonts?.ready.then(layoutScrollFx); })
+    .then((data) => { CV = data; renderAll(); document.fonts?.ready.then(() => { fitHeroTitle(); layoutScrollFx(); }); })
     .catch(() => {
       $('#heroLede').textContent = t('loadError');
       $$('.reveal').forEach((el) => el.classList.add('in'));

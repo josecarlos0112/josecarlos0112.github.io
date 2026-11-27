@@ -1,7 +1,7 @@
 {
   "meta": {
     "updated": "2026-11-24",
-    "version": "1.3.1",
+    "version": "1.4.0",
     "languages": ["es", "en"]
   },
   "basics": {
@@ -26,8 +26,8 @@
       { "network": "GitHub", "username": "josecarlos0112", "url": "https://github.com/josecarlos0112" }
     ],
     "summary": {
-      "es": "Estudiante de último curso de Ingeniería Informática (graduación en junio de 2027) con más de 6 años de experiencia práctica en desarrollo web, administración de sistemas y soporte IT en entorno empresarial real. Actualmente realizando prácticas de QA en el departamento de Desarrollo Digital del Atlético de Madrid, compaginadas con mi rol de administrador de la infraestructura de hosting y dominios de Andes Systems. Acostumbrado a trabajar de forma autónoma, documentar procesos y comunicarme directamente con clientes.",
-      "en": "Final-year Computer Engineering student (graduating June 2027) with over 6 years of hands-on experience in web development, systems administration and IT support in a real business environment. Currently a QA intern in the Digital Development department at Atlético de Madrid, alongside my role as administrator of Andes Systems' hosting and domain infrastructure. Comfortable working independently, documenting processes and communicating directly with clients."
+      "es": "Estudiante de último curso de Ingeniería Informática (graduación en junio de 2027) con más de 6 años de experiencia práctica en desarrollo web, administración de sistemas y soporte IT en entorno empresarial real. Actualmente realizando prácticas de QA en el departamento de Desarrollo Digital del Atlético de Madrid, compaginadas con mi rol de administrador de la infraestructura de hosting y dominios de Andes Systems. Acostumbrado a trabajar en equipo con metodología Scrum, coordinarme con distintos perfiles, documentar procesos y comunicarme directamente con clientes.",
+      "en": "Final-year Computer Engineering student (graduating June 2027) with over 6 years of hands-on experience in web development, systems administration and IT support in a real business environment. Currently a QA intern in the Digital Development department at Atlético de Madrid, alongside my role as administrator of Andes Systems' hosting and domain infrastructure. Used to working in teams under Scrum, coordinating with different profiles, documenting processes and communicating directly with clients."
     }
   },
   "work": [
@@ -98,11 +98,11 @@
       "highlights": {
         "es": [
           "Trabajos de reforma: pintura, soldadura, pladur, fontanería y electricidad básica",
-          "Gestión autónoma de proyectos: presupuesto, materiales, plazos y relación con el cliente"
+          "Gestión integral de proyectos: presupuesto, materiales, plazos y relación con el cliente"
         ],
         "en": [
           "Renovation work: painting, welding, plasterboard, plumbing and basic electrical",
-          "Autonomous project management: budgeting, materials, deadlines and client relations"
+          "End-to-end project management: budgeting, materials, deadlines and client relations"
         ]
       }
     }
@@ -139,7 +139,7 @@
   "skills": [
     { "category": { "es": "Desarrollo Web", "en": "Web Development" }, "items": ["Laravel (PHP)", "HTML", "CSS", "JavaScript", "WordPress"] },
     { "category": { "es": "Sistemas y Cloud", "en": "Systems & Cloud" }, "items": ["AWS EC2", "cPanel", "WHM", "Linux", "SSH", "MobaXterm", "DNS"] },
-    { "category": { "es": "Bases de datos", "en": "Databases" }, "items": ["MySQL", "MariaDB", "HeidiSQL"] },
+    { "category": { "es": "Bases de datos", "en": "Databases" }, "items": ["MySQL", "MariaDB", "SQL Server", "Oracle"] },
     { "category": { "es": "QA y Gestión", "en": "QA & Management" }, "items": ["Jira", "Scrum", "ITIL v4", "TOGAF"] },
     { "category": { "es": "Herramientas", "en": "Tools" }, "items": ["Git", "GitHub", "Microsoft 365", "Google Workspace", "Postman", "Canva", "Meta Ads"] },
     { "category": { "es": "Inteligencia Artificial", "en": "Artificial Intelligence" }, "items": ["Claude", "ChatGPT", "TensorFlow/Keras", "Transfer learning"] },
@@ -151,20 +151,141 @@
   ],
   "projects": [
     {
-      "name": { "es": "Clasificador de neumonía en radiografías de tórax", "en": "Chest X-ray pneumonia classifier" },
+      "name": {
+        "es": "Webs de alto impacto visual",
+        "en": "High-impact websites"
+      },
+      "tag": {
+        "es": "Web · 3D · Interacción",
+        "en": "Web · 3D · Interaction"
+      },
+      "icon": "web",
+      "description": {
+        "es": "Diseño y desarrollo de webs que se recuerdan: 3D en tiempo real, animaciones y microinteracciones que convierten una visita en una experiencia. Esta web es el ejemplo: un avatar que te sigue con la mirada y minijuegos integrados.",
+        "en": "Design and development of memorable websites: real-time 3D, animations and micro-interactions that turn a visit into an experience. This site is the example: an avatar that follows you with its eyes and built-in mini-games."
+      },
+      "keywords": [
+        "Three.js",
+        "WebGL / GLSL",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Claude Code"
+      ]
+    },
+    {
+      "name": {
+        "es": "T.A.L.O — asistente virtual personal",
+        "en": "T.A.L.O — personal virtual assistant"
+      },
+      "tag": {
+        "es": "IA · Productividad",
+        "en": "AI · Productivity"
+      },
+      "icon": "ai",
+      "status": {
+        "es": "En desarrollo",
+        "en": "In development"
+      },
+      "description": {
+        "es": "Asistente virtual en forma de app web instalable (PWA) para organizar el día a día: gestión de tareas con prioridades y fechas de vencimiento, seguimiento de proyectos con progreso automático y control de gastos con gráficas mensuales y por categoría. En desarrollo: un chat integrado con la API de Claude que conocerá tus tareas, proyectos y gastos para ayudarte a planificar el día, priorizar pendientes y resumir en qué punto está cada proyecto.",
+        "en": "Virtual assistant built as an installable web app (PWA) to organise day-to-day life: task management with priorities and due dates, project tracking with automatic progress, and expense control with monthly and per-category charts. In development: a built-in chat powered by the Claude API that will know your tasks, projects and expenses to help you plan the day, prioritise what is pending and summarise where each project stands."
+      },
+      "keywords": [
+        "React 18",
+        "Vite",
+        "Zustand",
+        "Recharts",
+        "PWA",
+        "Claude"
+      ]
+    },
+    {
+      "name": {
+        "es": "Automatización y reducción de procesos",
+        "en": "Automation & process reduction"
+      },
+      "tag": {
+        "es": "IA · Automatización",
+        "en": "AI · Automation"
+      },
+      "icon": "bolt",
+      "description": {
+        "es": "Automatizo mis propios procesos de trabajo para dedicar el tiempo a lo que aporta valor: agentes y comandos de Claude, scripts y flujos que eliminan tareas repetitivas en altas de clientes, despliegues, informes y mantenimiento.",
+        "en": "I automate my own work processes to spend my time where it adds value: Claude agents and commands, scripts and workflows that remove repetitive tasks from client onboarding, deployments, reports and maintenance."
+      },
+      "keywords": [
+        "Claude Code",
+        "AI agents",
+        "PowerShell",
+        "Node.js",
+        "GitHub CLI"
+      ]
+    },
+    {
+      "name": {
+        "es": "WebStudio — webs para negocios en Perú",
+        "en": "WebStudio — websites for businesses in Peru"
+      },
+      "tag": {
+        "es": "Negocio · Web",
+        "en": "Business · Web"
+      },
+      "icon": "globe",
+      "description": {
+        "es": "Estudio de webs para pequeños y medianos negocios: plantilla base, checklist de entrega, estándares de seguridad y legales, y subagentes de Claude que automatizan altas, auditorías y entregas.",
+        "en": "Web studio for small and medium businesses: base template, delivery checklist, security and legal standards, and Claude subagents that automate onboarding, audits and handovers."
+      },
+      "keywords": [
+        "Astro",
+        "Bootstrap 5",
+        "JavaScript",
+        "Claude Code",
+        "GitHub"
+      ]
+    },
+    {
+      "name": {
+        "es": "Clasificador de neumonía en radiografías de tórax",
+        "en": "Chest X-ray pneumonia classifier"
+      },
+      "tag": {
+        "es": "IA · Visión artificial",
+        "en": "AI · Computer vision"
+      },
+      "icon": "scan",
       "description": {
         "es": "Clasificador binario con transfer learning (VGG16 / EfficientNetB0) entrenado sobre datos de Kaggle en Google Colab.",
         "en": "Binary classifier using transfer learning (VGG16 / EfficientNetB0) trained on Kaggle data in Google Colab."
       },
-      "keywords": ["Python", "TensorFlow", "Keras", "Transfer learning", "Google Colab"]
+      "keywords": [
+        "Python",
+        "TensorFlow",
+        "Keras",
+        "Transfer learning",
+        "Google Colab"
+      ]
     },
     {
-      "name": { "es": "Integración de correo transaccional con Microsoft Graph", "en": "Transactional email integration with Microsoft Graph" },
+      "name": {
+        "es": "Integración de correo transaccional con Microsoft Graph",
+        "en": "Transactional email integration with Microsoft Graph"
+      },
+      "tag": {
+        "es": "Backend · Integración",
+        "en": "Backend · Integration"
+      },
+      "icon": "mail",
       "description": {
         "es": "Envío de correo desde un sistema Laravel en producción vía Microsoft 365, con registro de aplicación en Entra ID y OAuth 2.0.",
         "en": "Email delivery from a production Laravel system via Microsoft 365, with app registration in Entra ID and OAuth 2.0."
       },
-      "keywords": ["Laravel", "Microsoft Graph API", "OAuth 2.0", "Entra ID"]
+      "keywords": [
+        "Laravel",
+        "Microsoft Graph API",
+        "OAuth 2.0",
+        "Entra ID"
+      ]
     }
   ],
   "volunteer": {

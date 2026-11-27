@@ -15,12 +15,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
+  <!-- 3D caricature: start downloading the model and Three.js right away -->
+  <link rel="preload" as="fetch" href="assets/models/avatar.glb" crossorigin>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js">
   <script>
     try {
       var t = localStorage.getItem('theme');
       if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
       document.documentElement.dataset.theme = t;
     } catch (e) {}
+    // If WebGL is available the 3D caricature will load: hide the 2D fallback from the first paint.
+    try { var c = document.createElement('canvas'); if (c.getContext('webgl2') || c.getContext('webgl')) document.documentElement.classList.add('webgl'); } catch (e) {}
   </script>
 </head>
 <body>
@@ -75,7 +80,37 @@
         </div>
       </div>
 
+      <!-- Caricature: layered 3D stage that tilts with the mouse and turns to look at the cursor -->
       <div class="hero-side reveal">
+        <div class="avatar-stage" id="avatarStage">
+          <div class="av-scene" id="avScene">
+            <div class="av-ring" aria-hidden="true"></div>
+            <div class="av-floor" aria-hidden="true"></div>
+            <button type="button" class="av-figure" id="avFigure" aria-label="José Carlos">
+              <span class="av-body-wrap" id="avBodyWrap">
+                <img class="av-body" src="assets/img/avatar-body.webp" alt="Caricatura 3D de José Carlos" width="440" height="1000" fetchpriority="high">
+                <span class="av-head" id="avHead"><img src="assets/img/avatar-head.webp" alt="" width="440" height="256"></span>
+              </span>
+            </button>
+            <div class="av-chip av-c1"><span class="av-k" data-i18n="hero.based">Base</span><span id="heroLocation">Madrid</span></div>
+            <div class="av-chip av-c2"><span class="av-k" data-i18n="hero.from">De</span><span id="heroFrom">Lima, Perú</span></div>
+            <button type="button" class="av-chip av-c3" data-arcade-focus>🎮 <span data-i18n="hero.arcadeChip">3 minijuegos ↓</span></button>
+            <div class="av-bubble" id="avBubble" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCADE: terminal with 3 mini-games; the caricature peeks in and reacts to the games -->
+    <section class="arcade-sec container" id="play" aria-label="Arcade">
+      <div class="arcade-wrap">
+        <div class="av-peek" id="avPeek" aria-hidden="true">
+          <span class="av-body-wrap" id="peekBodyWrap">
+            <img class="av-body" src="assets/img/avatar-body.webp" alt="" width="440" height="1000" loading="lazy">
+            <span class="av-head" id="peekHead"><img src="assets/img/avatar-head.webp" alt="" width="440" height="256" loading="lazy"></span>
+          </span>
+          <div class="av-bubble" id="peekBubble"></div>
+        </div>
         <button type="button" class="play-sticker" data-arcade-focus><span data-i18n="sticker.top">3 juegos</span><strong data-i18n="sticker.main">¡Juega!</strong></button>
         <div class="terminal" aria-label="Terminal">
           <div class="terminal-bar">
@@ -84,16 +119,6 @@
           </div>
           <pre class="terminal-body" id="terminal" aria-live="off"></pre>
           <div class="arcade" id="arcade"></div>
-        </div>
-        <div class="hero-badges">
-          <div class="badge-card">
-            <span class="badge-k" data-i18n="hero.based">Base</span>
-            <span class="badge-v" id="heroLocation">Madrid</span>
-          </div>
-          <div class="badge-card">
-            <span class="badge-k" data-i18n="hero.from">De</span>
-            <span class="badge-v" id="heroFrom">Lima, Perú</span>
-          </div>
         </div>
       </div>
     </section>
@@ -110,7 +135,10 @@
         <h2 data-i18n="about.title">Sobre mí</h2>
       </div>
       <div class="about-grid">
-        <p class="about-text reveal" id="aboutText"></p>
+        <div class="about-copy reveal">
+          <p class="about-text clamp" id="aboutText"></p>
+          <button type="button" class="read-more" id="aboutMore" aria-expanded="false" aria-controls="aboutText" data-i18n="about.more">Leer más</button>
+        </div>
         <div class="stats" id="stats"></div>
       </div>
     </section>
@@ -167,17 +195,15 @@
       <div class="edu-grid">
         <article class="card edu-main reveal" id="eduMain"></article>
         <div class="edu-side">
-          <article class="card reveal">
-            <h3 class="card-title" data-i18n="education.certs">Certificaciones</h3>
-            <ul class="cert-list" id="certList"></ul>
-          </article>
-          <article class="card reveal">
-            <h3 class="card-title" data-i18n="education.languages">Idiomas</h3>
-            <ul class="lang-list" id="langList"></ul>
-          </article>
-          <article class="card reveal">
-            <h3 class="card-title" data-i18n="education.volunteer">Voluntariado</h3>
-            <ul class="vol-list" id="volList"></ul>
+          <article class="card edu-tabs reveal">
+            <div class="tabs" role="tablist" aria-label="Más formación">
+              <button type="button" role="tab" id="tab-certs" aria-controls="panel-certs" aria-selected="true" data-i18n="education.certs">Certificaciones</button>
+              <button type="button" role="tab" id="tab-langs" aria-controls="panel-langs" aria-selected="false" tabindex="-1" data-i18n="education.languages">Idiomas</button>
+              <button type="button" role="tab" id="tab-vol" aria-controls="panel-vol" aria-selected="false" tabindex="-1" data-i18n="education.volunteer">Voluntariado</button>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="panel-certs" aria-labelledby="tab-certs"><ul class="cert-list" id="certList"></ul></div>
+            <div class="tab-panel" role="tabpanel" id="panel-langs" aria-labelledby="tab-langs" hidden><ul class="lang-list" id="langList"></ul></div>
+            <div class="tab-panel" role="tabpanel" id="panel-vol" aria-labelledby="tab-vol" hidden><ul class="vol-list" id="volList"></ul></div>
           </article>
         </div>
       </div>
@@ -220,5 +246,8 @@
 
   <script src="assets/app.js" defer></script>
   <script src="assets/fx.js" defer></script>
+  <script src="assets/avatar.js" defer></script>
+  <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/" } }</script>
+  <script type="module" src="assets/avatar3d.js"></script>
 </body>
 </html>

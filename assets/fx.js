@@ -398,6 +398,7 @@
         api.float(tx, ty - 14, `+${pts}`, '#ffffff');
         api.burst(tx, ty, '#cb3524', 14); api.burst(tx, ty, '#ffffff', 10);
         api.celebrate();
+        api.emit("goal");
       } else if (res === 'saved') {
         saves++;
         msg = { text: a('saved'), color: '#ffd166' };
@@ -674,6 +675,7 @@
         }
       },
       shake() { if (!stage) return; stage.classList.remove('shake'); void stage.offsetWidth; stage.classList.add('shake'); },
+      emit: (type, extra = {}) => dispatchEvent(new CustomEvent("arcade", { detail: { type, game: gameId, ...extra } })),
       celebrate() {
         if (!term || reduced) return;
         const r = term.getBoundingClientRect();
@@ -718,6 +720,7 @@
       canvas.addEventListener('pointerdown', onPointer);
       stage.querySelector('.bh-close').addEventListener('click', () => stop(true));
       G = GAMES[id](api);
+      api.emit("start");
       S = { phase: 'count', count: 3, countT: 0, time: 0, fx: [] };
       hud.time.textContent = G.hudRight();
       showCount();
@@ -832,6 +835,7 @@
       overlay.querySelector('[data-act="menu"]').addEventListener('click', () => stop(true));
       overlay.querySelector('[data-act="contact"]').addEventListener('click', () => stop());
       if (isBest && res.score > 0) api.celebrate();
+      api.emit("end", { record: isBest && res.score > 0, score: res.score });
     }
 
     function draw() {
