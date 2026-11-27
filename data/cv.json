@@ -1,7 +1,7 @@
 {
   "meta": {
     "updated": "2026-11-24",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "languages": ["es", "en"]
   },
   "basics": {
@@ -55,6 +55,7 @@
     {
       "id": "andes-systems",
       "company": "Andes Systems",
+      "url": "https://andessystems.com",
       "position": { "es": "Administrador de Sistemas y Desarrollador Web", "en": "Systems Administrator & Web Developer" },
       "location": { "es": "Perú / Remoto", "en": "Peru / Remote" },
       "startDate": "2019",

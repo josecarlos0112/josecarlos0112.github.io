@@ -1045,3 +1045,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @media (max-width: 720px) {
   .projects { grid-template-columns: 1fr; }
 }
+
+/* External link to a company site (e.g. Andes Systems): subtle dotted underline, small arrow on hover */
+.ext-link { text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color .2s; }
+.ext-link::after { content: " ↗"; font-size: .7em; opacity: 0; transition: opacity .2s; }
+.ext-link:hover { color: var(--accent); }
+.ext-link:hover::after { opacity: 1; }
+.about-text mark .ext-link:hover { color: transparent; }

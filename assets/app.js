@@ -8,6 +8,11 @@
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   // Wraps mentions of the club in an interactive span (see assets/fx.js).
   const atleti = (html) => String(html).replace(/Atlético de Madrid/g, '<span class="atleti" tabindex="0" role="button">Atlético de Madrid</span>');
+  // Mentions of Andes Systems link to its website (URL from cv.json, work entry 'andes-systems').
+  const andes = (html) => {
+    const url = (typeof CV !== 'undefined' && CV?.work?.find((w) => w.id === 'andes-systems')?.url) || '';
+    return url ? String(html).replace(/Andes Systems/g, `<a class="ext-link" href="${url}" target="_blank" rel="noopener">Andes Systems</a>`) : String(html);
+  };
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Phones and touch tablets get a calmer page: no scroll-driven sliding (it caused motion sickness).
   const calmMQ = matchMedia('(max-width: 860px), (pointer: coarse)');
@@ -156,7 +161,7 @@
     fitHeroTitle();
     $('#heroStatus').innerHTML = atleti(esc(t('hero.status')));
     $('#heroRoles').innerHTML = L(b.headline).split('·').map((s) => `<span>${esc(s.trim())}</span>`).join('');
-    $('#heroLede').innerHTML = atleti(t('hero.lede'));
+    $('#heroLede').innerHTML = andes(atleti(t('hero.lede')));
     $('#heroLocation').textContent = `${b.location.city}, ${L(b.location.country)}`;
     $('#heroFrom').textContent = L(b.origin) || '';
   }
@@ -195,7 +200,7 @@
     ['Andes Systems', '6 años', '6 years'].forEach((k) => {
       txt = txt.replace(k, `<mark>${k}</mark>`);
     });
-    $('#aboutText').innerHTML = atleti(txt);
+    $('#aboutText').innerHTML = andes(atleti(txt));
     $('#aboutMore').textContent = $('#aboutText').classList.contains('clamp') ? t('about.more') : t('about.less');
 
     const earliest = CV.work.reduce((min, w) => (String(w.startDate) < min ? String(w.startDate) : min), '9999');
@@ -225,7 +230,7 @@
         </div>
         <article class="card job-card reveal">
           <h3>${esc(L(w.position))}</h3>
-          <div class="job-company"><strong>${atleti(esc(L(w.company)))}</strong><span class="sep"></span><span>${esc(L(w.location))}</span></div>
+          <div class="job-company"><strong>${andes(atleti(esc(L(w.company))))}</strong><span class="sep"></span><span>${esc(L(w.location))}</span></div>
           <ul class="bullets">${hl.map((h, i) => `<li class="${i >= LIMIT ? 'hidden' : ''}">${esc(h)}</li>`).join('')}</ul>
           ${extra > 0 ? `<button type="button" class="more-btn" data-n="${extra}" aria-expanded="false">${esc(t('more').replace('{n}', extra))} ↓</button>` : ''}
         </article>
